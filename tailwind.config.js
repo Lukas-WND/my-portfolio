@@ -11,6 +11,9 @@ export default {
       },
       textStroke: {
         khaki: '3px khaki'
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite'
       }
     },
   },
