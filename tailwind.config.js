@@ -7,6 +7,7 @@ export default {
         'dark-ciano': '#081C1C',
         'almond': '#EAE0D5',
         'khaki': '#C6AC8F',
+        'gunmetal': '#22333B'
       },
       textStroke: {
         khaki: '3px khaki'
