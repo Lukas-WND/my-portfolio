@@ -2,8 +2,8 @@ export function HomeHero() {
   return (
     <section className="relative h-screen">
       <div className="absolute w-full h-full flex items-center justify-center">
-        <div className="h-full aspect-square rotate-[300deg] overflow-hidden p-20">
-          <div className="absolute bg-gradient-to-r from-gunmetal to-khaki w-[200%] h-[200%] -left-1/2 -top-1/2 animate-spin"></div>
+        <div className="h-full aspect-square rotate-[300deg] overflow-hidden p-[2px]">
+          <div className="absolute bg-gradient-to-r from-dark-ciano to-khaki from-50% w-[200%] h-[200%] -left-1/2 -top-1/2 animate-spin"></div>
           <div className="relative w-full h-full bg-dark-ciano"></div>
         </div>
       </div>
