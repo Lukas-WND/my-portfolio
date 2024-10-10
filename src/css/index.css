@@ -3,7 +3,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
 
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+}
+
+* {
+  scroll-behavior: smooth;
+}
 
 :root {
   font-family: Tanker-Regular, system-ui, Avenir, Helvetica, Arial, sans-serif;

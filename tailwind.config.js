@@ -15,10 +15,12 @@ export default {
       keyframes: {
         'text-rise-from-behind': {
           '0%': {
+            'opacity': '100%',
             transform: 'translateY(100%)', 
             'clip-path': 'inset(0 0 100% 0)'
           },
           '100%': {
+            'opacity': '100%',
             transform: 'translateY(0)', 
             'clip-path': 'inset(0 0 0 0)'
           }

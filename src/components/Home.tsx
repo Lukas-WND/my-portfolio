@@ -9,9 +9,15 @@ export function HomeHero() {
           </div>
         </div>
         <div className="relative h-full text-center content-center text-[300px] leading-[0.85] tracking-wider">
-          <h2 className="text-almond animate-text-rise-from-behind">I'm Lukas</h2>
-          <h2 className="text-inherit stroke-khaki animate-text-rise-from-behind">I'm Lukas</h2>
-          <h2 className="text-almond animate-text-rise-from-behind">I'm Lukas</h2>
+          <h2 className="text-almond animate-text-rise-from-behind opacity-0">
+            I'm Lukas
+          </h2>
+          <h2 className="text-inherit stroke-khaki animate-text-rise-from-behind animation-delay-200 opacity-0">
+            I'm Lukas
+          </h2>
+          <h2 className="text-almond animate-text-rise-from-behind animation-delay-400 opacity-0">
+            I'm Lukas
+          </h2>
         </div>
       </div>
     </section>
