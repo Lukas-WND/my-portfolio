@@ -12,8 +12,21 @@ export default {
       textStroke: {
         khaki: '3px khaki'
       },
+      keyframes: {
+        'text-rise-from-behind': {
+          '0%': {
+            transform: 'translateY(100%)', 
+            'clip-path': 'inset(0 0 100% 0)'
+          },
+          '100%': {
+            transform: 'translateY(0)', 
+            'clip-path': 'inset(0 0 0 0)'
+          }
+        }
+      },
       animation: {
-        'spin-slow': 'spin 3s linear infinite'
+        'spin-slow': 'spin 3s linear infinite',
+        'text-rise-from-behind': 'text-rise-from-behind 0.7s ease-out forwards'
       }
     },
   },
