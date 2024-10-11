@@ -3,6 +3,10 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'primary': ['Tanker-Regular', 'system-ui', 'Avenir', 'Helvetica', 'Arial', 'sans-serif'],
+        'secondary': ['"Bebas Neue"', 'sans-serif']
+      },
       colors: {
         'dark-ciano': '#081C1C',
         'almond': '#EAE0D5',
@@ -28,7 +32,7 @@ export default {
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
-        'text-rise-from-behind': 'text-rise-from-behind 0.7s ease-out forwards'
+        'text-rise-from-behind': 'text-rise-from-behind 0.6s ease-out forwards'
       }
     },
   },

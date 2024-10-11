@@ -58,7 +58,7 @@ export function Header() {
           <nav className="flex gap-3 h-full items-center">
             {menu.map((item: Nav, idx: number) => (
               <a href={item.href} className="h-full" key={idx}>
-                <div className="w-40 h-full text-center content-center text-almond bg-gunmetal rounded-[0.250rem] text-xl">
+                <div className="w-40 h-full text-center content-center text-almond bg-gunmetal rounded-[0.250rem] font-secondary text-xl">
                   {item.label}
                 </div>
               </a>

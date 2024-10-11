@@ -1,4 +1,5 @@
 @import url('tanker.css');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +20,7 @@
 
 :root {
   font-family: Tanker-Regular, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
