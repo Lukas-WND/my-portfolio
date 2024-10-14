@@ -18,10 +18,10 @@ export function About() {
             className="w-full h-full object-cover content-center"
           />
         </div>
-        <div className="col-span-4 row-span-1 col-start-9 text-almond text-9xl text-end font-secondary">
+        <div className="col-span-4 row-span-2 col-start-9 text-[#5E503F] text-9xl text-end font-secondary">
           About Me
         </div>
-        <div className="col-span-6 col-start-7 row-span-11 row-start-3 text-4xl text-justify text-almond font-secondary">
+        <div className="col-span-6 col-start-7 row-span-10 row-start-3 text-4xl text-justify text-almond font-secondary">
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis
             nobis quasi debitis porro dolorum exercitationem sed, voluptatibus
