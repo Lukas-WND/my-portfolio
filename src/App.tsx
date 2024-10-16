@@ -4,7 +4,7 @@ import { HomeHero } from "./components/Home";
 
 function App() {
   return (
-    <main className="w-full bg-dark-ciano overflow-hidden">
+    <main className="w-full bg-dark-ciano ">
       <Header />
       <HomeHero />
       <About />
