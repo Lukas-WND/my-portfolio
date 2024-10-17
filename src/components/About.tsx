@@ -5,156 +5,181 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function About() {
   const container = useRef<HTMLElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const imageBgRef = useRef<HTMLImageElement>(null);
-  gsap.registerPlugin(ScrollTrigger);
+  const imagesRef = useRef<HTMLDivElement>(null);
+  const bgRef = useRef<HTMLDivElement>(null);
 
-  const sections = [
-    {
-      img: "/city.jpg",
-      title: "About Me",
-      content: (
-        <article className="text-4xl text-almond font-secondary text-justify mt-10 pl-10">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquam
-            officiis, id, fugiat ut eligendi recusandae ducimus corrupti dolorum
-            nemo obcaecati labore eaque in quisquam sint quis! Facilis, quis
-            commodi!
-          </p>
-          <p className="mt-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-            illum sint inventore esse velit reprehenderit amet magni nobis
-            dignissimos? Earum consequatur ipsam rem, qui ratione repellat
-            cupiditate obcaecati provident ullam.
-          </p>
-        </article>
-      ),
-    },
-    {
-      img: "/gameboy.jpg",
-      title: "Works",
-      content: (
-        <article className="text-4xl text-almond font-secondary text-justify mt-10 pl-10">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquam
-            officiis, id, fugiat ut eligendi recusandae ducimus corrupti dolorum
-            nemo obcaecati labore eaque in quisquam sint quis! Facilis, quis
-            commodi!
-          </p>
-          <p className="mt-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-            illum sint inventore esse velit reprehenderit amet magni nobis
-            dignissimos? Earum consequatur ipsam rem, qui ratione repellat
-            cupiditate obcaecati provident ullam.
-          </p>
-        </article>
-      ),
-    },
-    {
-      img: "/50.jpg",
-      title: "Education",
-      content: (
-        <article className="text-4xl text-almond font-secondary text-justify mt-10 pl-10">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos aliquam
-            officiis, id, fugiat ut eligendi recusandae ducimus corrupti dolorum
-            nemo obcaecati labore eaque in quisquam sint quis! Facilis, quis
-            commodi!
-          </p>
-          <p className="mt-8">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-            illum sint inventore esse velit reprehenderit amet magni nobis
-            dignissimos? Earum consequatur ipsam rem, qui ratione repellat
-            cupiditate obcaecati provident ullam.
-          </p>
-        </article>
-      ),
-    },
-  ];
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const tl = gsap.timeline();
+    const contentArray: Element[] = gsap.utils.toArray(".content");
 
-  useGSAP(
-    () => {
-      gsap.set(container.current, { scale: 0.8 });
+    gsap.to(".sec", {
+      opacity: 100,
+      paddingTop: 0,
+      scrollTrigger: {
+        trigger: ".sec",
+        start: "top center",
+        end: "top 70%",
+        scrub: true,
+      },
+    });
 
-      gsap.to(container.current, {
-        scale: 1,
-        scrollTrigger: {
-          trigger: container.current,
-          start: "top bottom",
-          end: "center bottom",
-          scrub: true,
-        },
-      });
+    tl.to(".sphere", {
+      scale: 1.5,
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top bottom",
+        end: "top top",
+        scrub: 0.7,
+      },
+    });
 
-      sections.forEach((section, index) => {
+    ScrollTrigger.create({
+      trigger: imagesRef.current,
+      endTrigger: "#texts",
+      pin: true,
+      start: "top 80px",
+      end: "bottom bottom",
+      scrub: true,
+    });
+
+    ScrollTrigger.create({
+      trigger: bgRef.current,
+      endTrigger: container.current,
+      pin: true,
+      start: "top top",
+      end: "bottom bottom",
+      scrub: true,
+    });
+
+    contentArray.forEach((item, index: number) => {
+      index !== 0 &&
         ScrollTrigger.create({
-          markers: true,
-          trigger: `#section-${index}`,
+          animation: gsap.to(`.im${index + 1}`, {
+            opacity: 100,
+          }),
+          trigger: item,
+          scrub: true,
           start: "top center",
-          end: "bottom center",
-          onEnter: () => {
-            gsap.to(imageRef.current, {
-              opacity: 0,
-              onComplete: () => {
-                if (imageRef.current) {
-                  imageRef.current.src = section.img;
-                }
-                gsap.to(imageRef.current, { opacity: 1 });
-              },
-            });
-          },
-          
+          end: "top 25%",
         });
-      });
-    },
-    { scope: container }
-  );
+    });
+  });
 
   return (
     <section
       id="about"
       ref={container}
-      className="mt-24 w-full min-h-screen bg-khaki"
+      className="w-full min-h-screen relative "
     >
-      <div className="w-full h-full grid grid-cols-12">
-        <div className="col-span-4 sticky top-0 w-full h-screen">
-          <div className="relative w-full h-full ">
-            <div className="absolute w-full h-full overflow-hidden">
-              <div className="relative inset-0 h-full blur-md">
-                {sections.map((item, idx) => (
-                  <img
-                    key={idx}
-                    ref={imageBgRef}
-                    src={item.img}
-                    alt="cidade_bg"
-                    className="h-full scale-105 object-cover"
-                  />
-                ))}
-              </div>
-            </div>
-            <div className="ml-20 relative w-full h-full flex justify-end items-center overflow-hidden">
-              <div className="w-[80%]">
-                <img
-                  ref={imageRef}
-                  src="/city.jpg"
-                  alt="cidade"
-                  className="w-full object-cover"
-                />
-              </div>
-            </div>
+      <div className="absolute w-full rounded-full z-[1] aspect-square bg-walnut sphere"></div>
+
+      <div className="relative z-[2] h-full w-full sec">
+        <div className="absolute w-2/5 max-h-screen" ref={bgRef}>
+          <div className="relative w-full h-screen overflow-hidden">
+            <img
+              src="/city.jpg"
+              alt="cidade"
+              className="absolute h-full w-full blur-md scale-105 object-cover im1"
+            />
+            <img
+              src="/gameboy.jpg"
+              alt="cidade"
+              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover im2"
+            />
+            <img
+              src="/50.jpg"
+              alt="cidade"
+              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover im3"
+            />
           </div>
         </div>
 
-        <aside className="col-span-7 col-start-6 p-20 w-full flex flex-col gap-72">
-          {sections.map((item, idx) => (
-            <div id={`section-${idx}`} key={idx} className="relative w-full">
-              <h2 className="text-9xl text-walnut font-secondary w-full text-end">
-                {item.title}
+        <div className="relative grid grid-cols-12 w-full h-full pt-20 pr-20 pl-40 about-content">
+          <div
+            className="col-span-4 col-start-2 w-full h-[calc(100vh-10rem)] relative"
+            ref={imagesRef}
+          >
+            <img
+              src="/city.jpg"
+              alt="cidade2"
+              className="absolute h-full w-full object-cover im1"
+            />
+            <img
+              src="/gameboy.jpg"
+              alt="cidade3"
+              className="absolute h-full w-full object-cover opacity-0 im2"
+            />
+            <img
+              src="/50.jpg"
+              alt="cidade4"
+              className="absolute h-full w-full object-cover opacity-0 im3"
+            />
+          </div>
+
+          <div className="col-span-6 col-start-7 h-full text-khaki" id="texts">
+            <div className="h-[calc(100vh-5rem)] w-full content">
+              <h2 className="w-full text-9xl font-secondary text-almond text-end">
+                About Me
               </h2>
-              {item.content}
+              <article className="text-4xl font-secondary  mt-10 text-justify">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+                  non, ut iure officia voluptatibus, unde quo quaerat pariatur
+                  sequi, minus neque totam commodi quasi animi asperiores maxime
+                  ratione cumque. Eveniet.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Similique ad quae nobis exercitationem dolore doloribus
+                  assumenda velit odit, beatae repudiandae accusamus dolores
+                  error dolorem enim pariatur blanditiis dolor, perspiciatis
+                  natus?
+                </p>
+              </article>
             </div>
-          ))}
-        </aside>
+            <div className="h-[calc(100vh-5rem)] w-full content">
+              <h2 className="w-full text-9xl font-secondary text-almond text-end">
+                Works
+              </h2>
+              <article className="text-4xl font-secondary  mt-10 text-justify">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+                  non, ut iure officia voluptatibus, unde quo quaerat pariatur
+                  sequi, minus neque totam commodi quasi animi asperiores maxime
+                  ratione cumque. Eveniet.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Similique ad quae nobis exercitationem dolore doloribus
+                  assumenda velit odit, beatae repudiandae accusamus dolores
+                  error dolorem enim pariatur blanditiis dolor, perspiciatis
+                  natus?
+                </p>
+              </article>
+            </div>
+            <div className="h-[calc(100vh-5rem)] w-full content">
+              <h2 className="w-full text-9xl font-secondary text-almond text-end">
+                Education
+              </h2>
+              <article className="text-4xl font-secondary  mt-10 text-justify">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+                  non, ut iure officia voluptatibus, unde quo quaerat pariatur
+                  sequi, minus neque totam commodi quasi animi asperiores maxime
+                  ratione cumque. Eveniet.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Similique ad quae nobis exercitationem dolore doloribus
+                  assumenda velit odit, beatae repudiandae accusamus dolores
+                  error dolorem enim pariatur blanditiis dolor, perspiciatis
+                  natus?
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

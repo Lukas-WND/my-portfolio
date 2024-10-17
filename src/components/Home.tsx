@@ -1,6 +1,31 @@
+import gsap from "gsap";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 export function HomeHero() {
+  const home = useRef<HTMLElement>(null);
+  const title = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    gsap.to(title.current, {
+      opacity: 0,
+      paddingTop: 200,
+      scrollTrigger: {
+        trigger: home.current,
+        scrub: true,
+        pin: true,
+      },
+    });
+  });
+
   return (
-    <section className="h-screen flex items-center justify-center">
+    <section
+      ref={home}
+      id="home"
+      className="mb-[-100svh] h-screen flex items-center justify-center"
+    >
       <div className="w-4/5 relative text-dark-ciano">
         <div className="absolute w-full h-full flex items-center justify-center">
           <div className="h-[120%] aspect-square rotate-[300deg] overflow-hidden p-[2px]">
@@ -8,7 +33,10 @@ export function HomeHero() {
             <div className="relative w-full h-full bg-dark-ciano"></div>
           </div>
         </div>
-        <div className="relative h-full text-center content-center text-[300px] leading-[0.85] tracking-wider">
+        <div
+          ref={title}
+          className="relative h-full text-center content-center text-[300px] leading-[0.85] tracking-wider"
+        >
           <h2 className="text-almond animate-text-rise-from-behind opacity-0">
             I'm Lukas
           </h2>

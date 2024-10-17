@@ -11,7 +11,7 @@ export default {
         'dark-ciano': '#081C1C',
         'almond': '#EAE0D5',
         'khaki': '#C6AC8F',
-        'walnut': '#5E503F',
+        'walnut': '#996515',
         'gunmetal': '#22333B'
       },
       textStroke: {
@@ -33,7 +33,7 @@ export default {
       },
       animation: {
         'spin-slow': 'spin 3s linear infinite',
-        'text-rise-from-behind': 'text-rise-from-behind 0.6s ease-out forwards'
+        'text-rise-from-behind': 'text-rise-from-behind 0.6s cubic-bezier(0,0,0,1) forwards'
       }
     },
   },
