@@ -7,24 +7,13 @@ export function About() {
   const container = useRef<HTMLElement>(null);
   const imagesRef = useRef<HTMLDivElement>(null);
   const bgRef = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    const tl = gsap.timeline();
     const contentArray: Element[] = gsap.utils.toArray(".content");
+    const tl = gsap.timeline();
 
-    gsap.to(".sec", {
-      opacity: 100,
-      paddingTop: 0,
-      scrollTrigger: {
-        trigger: ".sec",
-        start: "top center",
-        end: "top 70%",
-        scrub: true,
-      },
-    });
-
-    tl.to(".sphere", {
+    gsap.to(".sphere", {
       scale: 1.5,
       scrollTrigger: {
         trigger: container.current,
@@ -33,6 +22,17 @@ export function About() {
         scrub: 0.7,
       },
     });
+    // .from(".sec", {
+    //   y: 300,
+    //   opacity: 0.2,
+    //   ease: "back",
+    //   scrollTrigger: {
+    //     trigger: ".sec",
+    //     scrub: true,
+    //     start: "top center",
+    //     end: "top 70%",
+    //   },
+    // });
 
     ScrollTrigger.create({
       trigger: imagesRef.current,
@@ -53,7 +53,7 @@ export function About() {
     });
 
     contentArray.forEach((item, index: number) => {
-      index !== 0 &&
+      if (index !== 0) {
         ScrollTrigger.create({
           animation: gsap.to(`.im${index + 1}`, {
             opacity: 100,
@@ -63,6 +63,15 @@ export function About() {
           start: "top center",
           end: "top 25%",
         });
+
+        ScrollTrigger.create({
+          animation: gsap.from(item, { y: 200, opacity: 0 }),
+          trigger: item,
+          scrub: true,
+          start: "top 80%",
+          end: "top center",
+        });
+      }
     });
   });
 
