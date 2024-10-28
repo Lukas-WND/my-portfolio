@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Images } from "./Images";
 
 export function About() {
   const container = useRef<HTMLElement>(null);
@@ -65,7 +66,7 @@ export function About() {
         });
 
         ScrollTrigger.create({
-          animation: gsap.from(item, { y: 200, opacity: 0 }),
+          animation: gsap.from(item, { paddingTop: 100, opacity: 0 }),
           trigger: item,
           scrub: true,
           start: "top 80%",
@@ -79,52 +80,35 @@ export function About() {
     <section
       id="about"
       ref={container}
-      className="w-full min-h-screen relative "
+      className="w-full min-h-screen relative bg-walnut rounded-t-full"
     >
       <div className="absolute w-full rounded-full z-[1] aspect-square bg-walnut sphere"></div>
 
       <div className="relative z-[2] h-full w-full sec">
         <div className="absolute w-2/5 max-h-screen" ref={bgRef}>
           <div className="relative w-full h-screen overflow-hidden">
+            <div className="im1">
             <img
               src="/city.jpg"
               alt="cidade"
-              className="absolute h-full w-full blur-md scale-105 object-cover im1"
+              className="absolute h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 "
             />
+            </div>
             <img
               src="/gameboy.jpg"
               alt="cidade"
-              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover im2"
+              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 im2"
             />
             <img
               src="/50.jpg"
               alt="cidade"
-              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover im3"
+              className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 im3"
             />
           </div>
         </div>
 
         <div className="relative grid grid-cols-12 w-full h-full pt-20 pr-20 pl-40 about-content">
-          <div
-            className="col-span-4 col-start-2 w-full h-[calc(100vh-10rem)] relative"
-            ref={imagesRef}
-          >
-            <img
-              src="/city.jpg"
-              alt="cidade2"
-              className="absolute h-full w-full object-cover im1"
-            />
-            <img
-              src="/gameboy.jpg"
-              alt="cidade3"
-              className="absolute h-full w-full object-cover opacity-0 im2"
-            />
-            <img
-              src="/50.jpg"
-              alt="cidade4"
-              className="absolute h-full w-full object-cover opacity-0 im3"
-            />
-          </div>
+          <Images />
 
           <div className="col-span-6 col-start-7 h-full text-khaki" id="texts">
             <div className="h-[calc(100vh-5rem)] w-full content">
