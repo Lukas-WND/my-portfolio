@@ -1,3 +1,8 @@
+import { gsap } from "gsap/gsap-core";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useState } from "react";
+
 interface Nav {
   label: string;
   href: string;
@@ -27,6 +32,26 @@ function Linkedin() {
   );
 }
 
+function X() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="lucide lucide-x"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  );
+}
+
 export function Header() {
   const menu: Nav[] = [
     { label: "About", href: "/#about" },
@@ -35,10 +60,36 @@ export function Header() {
     { label: "Contact Me", href: "/#contact" },
   ];
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#home",
+        start: "bottom 10%",
+        scrub: true,
+      },
+    });
+
+    tl.to(".header-pc", {
+      y: -100,
+    });
+
+    tl.to(".header-mb", {
+      marginLeft: 0,
+    });
+  });
+
+  const [open, setOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setOpen((prev) => (prev == true ? false : true));
+  };
+
   return (
     <div className="fixed px-4 py-2 z-50 w-full">
-      <header className="h-9">
-        <div className="h-full flex items-center justify-between">
+      <header className="h-9 relative">
+        <div className="h-full flex items-center justify-between header-pc duration-500">
           <div className="h-full flex gap-5 items-center justify-center">
             <a
               className="h-full content-center"
@@ -64,6 +115,22 @@ export function Header() {
               </a>
             ))}
           </nav>
+        </div>
+        <div className="h-full w-full fixed inset-0 top-0 flex justify-end ml-20 duration-500 header-mb">
+          <div
+            className={`fixed inset-0 bg-black bg-opacity-50 ${
+              !open && "hidden"
+            }`}
+          ></div>
+          <div className="fixed top-0 right-0 h-screen overflow-y-auto w-[660px] bg-gunmetal py-16 px-12">
+            <button
+              className="absolute top-6 right-8"
+              onClick={toggleOpen}
+            >
+              <X />
+            </button>
+            <div className="text-white">oir sdkfjngjsd</div>
+          </div>
         </div>
       </header>
     </div>

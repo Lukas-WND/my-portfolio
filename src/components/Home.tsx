@@ -11,7 +11,7 @@ export function HomeHero() {
   useGSAP(() => {
     gsap.to(title.current, {
       opacity: 0,
-      paddingTop: 200,
+      paddingTop: 300,
       scrollTrigger: {
         trigger: home.current,
         scrub: true,

@@ -13,15 +13,15 @@ export function About() {
   useGSAP(() => {
     const contentArray: Element[] = gsap.utils.toArray(".content");
 
-    gsap.to(".sphere", {
-      scale: 1.5,
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top bottom",
-        end: "top top",
-        scrub: 0.7,
-      },
-    });
+    // gsap.to(".sphere", {
+    //   borderRadius: "2.5rem",
+    //   duration: 0.5,
+    //   scrollTrigger: {
+    //     trigger: ".sphere",
+    //     start: "top 60%",
+    //     end: "top top",
+    //   },
+    // });
 
     ScrollTrigger.create({
       trigger: imagesRef.current,
@@ -66,11 +66,11 @@ export function About() {
     <section
       id="about"
       ref={container}
-      className="w-full min-h-screen relative bg-walnut rounded-t-full"
+      className="w-full min-h-screen relative bg-walnut rounded-t-3xl"
     >
-      <div className="absolute w-full rounded-full z-[1] aspect-square bg-walnut sphere"></div>
+      {/* <div className="absolute top-0 w-full rounded-full z-[1] aspect-square bg-walnut sphere"></div> */}
 
-      <div className="relative z-[2] h-full w-full sec">
+      <div className="relative z-[2] sec">
         <div className="absolute w-2/5 max-h-screen" ref={bgRef}>
           <div className="relative w-full h-screen overflow-hidden">
             <div className="im1">
@@ -97,11 +97,11 @@ export function About() {
           <Images />
 
           <div className="col-span-6 col-start-7 h-full text-khaki" id="texts">
-            <div className="h-[calc(100vh-5rem)] w-full content">
+            <article className="h-[calc(100vh-5rem)] w-full content">
               <h2 className="w-full text-9xl font-secondary text-almond text-end">
                 About Me
               </h2>
-              <article className="text-4xl font-secondary  mt-10 text-justify">
+              <div className="text-4xl font-secondary  mt-10 text-justify">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
                   non, ut iure officia voluptatibus, unde quo quaerat pariatur
@@ -115,13 +115,13 @@ export function About() {
                   error dolorem enim pariatur blanditiis dolor, perspiciatis
                   natus?
                 </p>
-              </article>
-            </div>
-            <div className="h-[calc(100vh-5rem)] w-full content">
+              </div>
+            </article>
+            <article className="h-[calc(100vh-5rem)] w-full content">
               <h2 className="w-full text-9xl font-secondary text-almond text-end">
-                Works
+                Experience
               </h2>
-              <article className="text-4xl font-secondary  mt-10 text-justify">
+              <div className="text-4xl font-secondary  mt-10 text-justify">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
                   non, ut iure officia voluptatibus, unde quo quaerat pariatur
@@ -135,13 +135,13 @@ export function About() {
                   error dolorem enim pariatur blanditiis dolor, perspiciatis
                   natus?
                 </p>
-              </article>
-            </div>
-            <div className="h-[calc(100vh-5rem)] w-full content">
+              </div>
+            </article>
+            <article className="h-[calc(100vh-5rem)] w-full content">
               <h2 className="w-full text-9xl font-secondary text-almond text-end">
                 Education
               </h2>
-              <article className="text-4xl font-secondary  mt-10 text-justify">
+              <div className="text-4xl font-secondary  mt-10 text-justify">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
                   non, ut iure officia voluptatibus, unde quo quaerat pariatur
@@ -155,8 +155,8 @@ export function About() {
                   error dolorem enim pariatur blanditiis dolor, perspiciatis
                   natus?
                 </p>
-              </article>
-            </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
