@@ -12,7 +12,6 @@ export function About() {
 
   useGSAP(() => {
     const contentArray: Element[] = gsap.utils.toArray(".content");
-    const tl = gsap.timeline();
 
     gsap.to(".sphere", {
       scale: 1.5,
@@ -23,17 +22,6 @@ export function About() {
         scrub: 0.7,
       },
     });
-    // .from(".sec", {
-    //   y: 300,
-    //   opacity: 0.2,
-    //   ease: "back",
-    //   scrollTrigger: {
-    //     trigger: ".sec",
-    //     scrub: true,
-    //     start: "top center",
-    //     end: "top 70%",
-    //   },
-    // });
 
     ScrollTrigger.create({
       trigger: imagesRef.current,
@@ -41,7 +29,6 @@ export function About() {
       pin: true,
       start: "top 80px",
       end: "bottom bottom",
-      scrub: true,
     });
 
     ScrollTrigger.create({
@@ -50,19 +37,18 @@ export function About() {
       pin: true,
       start: "top top",
       end: "bottom bottom",
-      scrub: true,
     });
 
     contentArray.forEach((item, index: number) => {
       if (index !== 0) {
         ScrollTrigger.create({
           animation: gsap.to(`.im${index + 1}`, {
-            opacity: 100,
+            opacity: 1,
           }),
           trigger: item,
           scrub: true,
           start: "top center",
-          end: "top 25%",
+          end: "top center",
         });
 
         ScrollTrigger.create({
@@ -88,11 +74,11 @@ export function About() {
         <div className="absolute w-2/5 max-h-screen" ref={bgRef}>
           <div className="relative w-full h-screen overflow-hidden">
             <div className="im1">
-            <img
-              src="/city.jpg"
-              alt="cidade"
-              className="absolute h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 "
-            />
+              <img
+                src="/city.jpg"
+                alt="cidade"
+                className="absolute h-full w-full blur-md scale-105 object-cover transition-opacity duration-700"
+              />
             </div>
             <img
               src="/gameboy.jpg"

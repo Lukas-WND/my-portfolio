@@ -5,10 +5,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export function Images() {
   const imagesRef = useRef<HTMLDivElement>(null);
-  const imagesArray: Element[] = gsap.utils.toArray(imagesRef.current);
   gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
+    const contentArray: Element[] = gsap.utils.toArray(".content");
     ScrollTrigger.create({
       trigger: imagesRef.current,
       endTrigger: "#texts",
@@ -17,14 +17,18 @@ export function Images() {
       end: "bottom bottom",
     });
 
-    gsap.to(".mask", {
-      maskPosition: "0% 0%",
-      duration: 0.7,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".mask",
-        start: "top 80px",
-      },
+    contentArray.forEach((item, idx: number) => {
+      if (idx > 0) {
+        ScrollTrigger.create({
+          animation: gsap.to(`.mask-${idx}`, {
+            maskPosition: "0% 0%",
+          }),
+          trigger: item,
+          start: "top center",
+          end: "top center",
+          scrub: true,
+        });
+      }
     });
   });
 
@@ -33,14 +37,14 @@ export function Images() {
       className="col-span-4 col-start-2 w-full h-[calc(100vh-10rem)] relative"
       ref={imagesRef}
     >
-      <div className="im w-full h-full absolute z-30">
-        <div className="mask bg-[url('/city.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%]"></div>
+      <div className="im w-full h-full absolute">
+        <div className="bg-[url('/city.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative"></div>
       </div>
-      <div className="im w-full h-full absolute z-20">
-        <div className="mask bg-[url('/gameboy.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%]"></div>
+      <div className="im w-full h-full absolute">
+        <div className="mask-1 bg-[url('/gameboy.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
       </div>
-      <div className="im w-full h-full absolut z-10">
-        <div className="mask bg-[url('/50.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%]"></div>
+      <div className="im w-full h-full absolute">
+        <div className="mask-2 bg-[url('/50.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
       </div>
     </div>
   );
