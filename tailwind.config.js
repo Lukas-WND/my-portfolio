@@ -12,7 +12,8 @@ export default {
         'almond': '#EAE0D5',
         'khaki': '#C6AC8F',
         'walnut': '#996515',
-        'gunmetal': '#22333B'
+        'gunmetal': '#22333B',
+        'rich-black': '#010B13'
       },
       textStroke: {
         khaki: '3px khaki'
