@@ -1,4 +1,5 @@
-import { gsap } from "gsap/gsap-core";
+import { useState } from "react";
+import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -32,15 +33,10 @@ function Linkedin() {
 }
 
 export function Header() {
-  const menu: Nav[] = [
-    { label: "About", href: "/#about" },
-    { label: "Skills", href: "/#skills" },
-    { label: "Projects", href: "/#projects" },
-    { label: "Contact Me", href: "/#contact" },
-  ];
-
+  const [isOpen, setIsOpen] = useState(false);
   gsap.registerPlugin(ScrollTrigger);
 
+  // Animação de retração do menu desktop
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -50,59 +46,84 @@ export function Header() {
       },
     });
 
-    tl.to(".header-pc", {
-      y: -100,
-    });
-
-    tl.to(".header-mb", {
-      marginLeft: 0,
-    });
+    tl.to(".header-pc", { y: -100 });
+    tl.to(".hamburger", { opacity: 1, duration: 0.3 });
   });
+
+  // Animação do menu lateral
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    gsap.to(".mobile-menu", { x: isOpen ? "100%" : "0%", duration: 0.5 });
+  };
+
+  const menu: Nav[] = [
+    { label: "About", href: "/#about" },
+    { label: "Skills", href: "/#skills" },
+    { label: "Projects", href: "/#projects" },
+    { label: "Contact Me", href: "/#contact" },
+  ];
 
   return (
     <div className="fixed px-4 py-2 z-50 w-full">
-      <header className="h-9 relative">
-        <div className="h-full flex items-center justify-between header-pc duration-500">
-          <div className="h-full flex gap-5 items-center justify-center">
-            <a
-              className="h-full content-center"
-              href="https://github.com/Lukas-WND"
-              target="_blank"
-            >
-              <Github />
-            </a>
-            <a
-              className="max-h-full"
-              href="https://www.linkedin.com/in/lukas-wendel/"
-              target="_blank"
-            >
+      {/* Navbar Desktop */}
+      <header className="h-9 relative hidden md:flex header-pc duration-500">
+        <div className="h-full flex items-center justify-between w-full">
+          <div className="flex gap-5 items-center">
+          <a href="https://www.linkedin.com/in/lukas-wendel/" target="_blank">
               <Linkedin />
+            </a>
+            <a href="https://github.com/Lukas-WND" target="_blank">
+              <Github />
             </a>
           </div>
           <nav className="flex gap-3 h-full items-center">
-            {menu.map((item: Nav, idx: number) => (
+            {menu.map((item, idx) => (
               <a href={item.href} className="h-full" key={idx}>
-                <div className="w-40 h-full text-center content-center text-almond bg-gunmetal rounded-[0.250rem] font-secondary text-xl">
+                <div className="w-40 h-full text-center content-center text-almond bg-gunmetal rounded-md font-secondary text-xl">
                   {item.label}
                 </div>
               </a>
             ))}
           </nav>
         </div>
-        {/* <div className="h-full w-full fixed inset-0 top-0 flex justify-end ml-20 duration-500 header-mb">
-          <div
-            className={`fixed inset-0 bg-black bg-opacity-50 ${
-              !open && "hidden"
-            }`}
-          ></div>
-          <div className="fixed top-0 right-0 h-screen overflow-y-auto w-[660px] bg-gunmetal py-16 px-12">
-            <button className="absolute top-6 right-8" onClick={toggleOpen}>
-              <X />
-            </button>
-            <div className="text-white">oir sdkfjngjsd</div>
-          </div>
-        </div> */}
       </header>
+
+      {/* Botão de Hambúrguer (Aparece no Mobile) */}
+      <button
+        className="md:hidden fixed top-4 right-4 z-50 hamburger opacity-0"
+        onClick={toggleMenu}
+      >
+        <div className="w-8 h-1 bg-white mb-1"></div>
+        <div className="w-8 h-1 bg-white mb-1"></div>
+        <div className="w-8 h-1 bg-white"></div>
+      </button>
+
+      {/* Menu Lateral (Mobile) */}
+      <div
+        className={`fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-500 ${
+          isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={toggleMenu}
+      ></div>
+      <div
+        className={`fixed top-0 right-0 h-screen w-64 bg-gunmetal py-16 px-6 transform translate-x-full mobile-menu`}
+      >
+        <button className="absolute top-6 right-6" onClick={toggleMenu}>
+          ✖
+        </button>
+        <nav className="flex flex-col gap-5">
+          {menu.map((item, idx) => (
+            <a
+              href={item.href}
+              className="text-white text-lg"
+              key={idx}
+              onClick={toggleMenu}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
     </div>
   );
 }

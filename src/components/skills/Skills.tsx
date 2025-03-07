@@ -14,7 +14,7 @@ export function Skills() {
           opacity: 1,
           filter: "blur(0px)",
           duration: 0.2,
-          ease: "back.out"
+          ease: "back.out",
         }),
         trigger: item,
         start: "top center",
@@ -24,7 +24,14 @@ export function Skills() {
     });
   });
 
-  const skillsList: string[] = ["TypeScript", "React", "UX/UI", "Node.js"];
+  const skillsList: string[] = [
+    "TypeScript",
+    "React",
+    "UX/UI",
+    "Node.js",
+    "NestJS",
+    "Next.js",
+  ];
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-rich-black">
@@ -32,7 +39,7 @@ export function Skills() {
         <h2 className="text-9xl text-white font-secondary">Skills</h2>
         <p></p>
       </div>
-      <ul className="mt-20 flex flex-col items-center">
+      <ul className="my-20 flex flex-col items-center">
         {skillsList.map((skill, idx) => (
           <li
             key={idx}
@@ -42,7 +49,6 @@ export function Skills() {
           </li>
         ))}
       </ul>
-      <div className="h-screen w-full"></div>
     </section>
   );
 }

@@ -75,7 +75,7 @@ export function About() {
           <div className="relative w-full h-screen overflow-hidden">
             <div className="im1">
               <img
-                src="/city.jpg"
+                src="/perfil.jpg"
                 alt="cidade"
                 className="absolute h-full w-full blur-md scale-105 object-cover transition-opacity duration-700"
               />
@@ -101,19 +101,27 @@ export function About() {
               <h2 className="w-full text-9xl font-secondary text-almond text-end">
                 About Me
               </h2>
-              <div className="text-4xl font-secondary  mt-10 text-justify">
+              <div className="text-4xl font-secondary mt-10 text-justify">
+                <p>Hello, my name is Lukas!</p>
+                <br />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-                  non, ut iure officia voluptatibus, unde quo quaerat pariatur
-                  sequi, minus neque totam commodi quasi animi asperiores maxime
-                  ratione cumque. Eveniet.
+                  I am a technology-driven software developer, committed to
+                  creating efficient and well-structured solutions. I have
+                  experience in{" "}
+                  <strong className="text-almond">front-end</strong> and{" "}
+                  <strong className="text-almond">back-end</strong> development,
+                  with a strong interest in the{" "}
+                  <strong className="text-almond">
+                    Internet of Things (IoT)
+                  </strong>
+                  , which is also the topic of my thesis. Currently, I am
+                  exploring new technologies to optimize embedded systems and
+                  their internet communication.
                 </p>
+                <br />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Similique ad quae nobis exercitationem dolore doloribus
-                  assumenda velit odit, beatae repudiandae accusamus dolores
-                  error dolorem enim pariatur blanditiis dolor, perspiciatis
-                  natus?
+                  In this portfolio, you will find more details about my skills,
+                  projects, and experiences. Feel free to explore!
                 </p>
               </div>
             </article>

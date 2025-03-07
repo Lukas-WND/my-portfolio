@@ -38,7 +38,7 @@ export function Images() {
       ref={imagesRef}
     >
       <div className="im w-full h-full absolute">
-        <div className="bg-[url('/city.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative"></div>
+        <div className="bg-[url('/perfil.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative"></div>
       </div>
       <div className="im w-full h-full absolute">
         <div className="mask-1 bg-[url('/gameboy.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
