@@ -81,12 +81,12 @@ export function About() {
               />
             </div>
             <img
-              src="/gameboy.jpg"
+              src="/compose.jpg"
               alt="cidade"
               className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 im2"
             />
             <img
-              src="/50.jpg"
+              src="/embedded.jpg"
               alt="cidade"
               className="absolute opacity-0 h-full w-full blur-md scale-105 object-cover transition-opacity duration-300 im3"
             />

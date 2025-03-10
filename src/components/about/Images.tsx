@@ -41,10 +41,10 @@ export function Images() {
         <div className="bg-[url('/perfil.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative"></div>
       </div>
       <div className="im w-full h-full absolute">
-        <div className="mask-1 bg-[url('/gameboy.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
+        <div className="mask-1 bg-[url('/compose.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
       </div>
       <div className="im w-full h-full absolute">
-        <div className="mask-2 bg-[url('/50.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
+        <div className="mask-2 bg-[url('/embedded.jpg')] bg-cover bg-center bg-no-repeat h-full w-full relative [mask-image:url('/city.jpg')] [mask-repeat:no-repeat] [mask-position:-50%-50%] transition-all ease-out duration-500"></div>
       </div>
     </div>
   );
