@@ -131,17 +131,43 @@ export function About() {
               </h2>
               <div className="text-4xl font-secondary  mt-10 text-justify">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-                  non, ut iure officia voluptatibus, unde quo quaerat pariatur
-                  sequi, minus neque totam commodi quasi animi asperiores maxime
-                  ratione cumque. Eveniet.
+                  I have experience in{" "}
+                  <strong className="text-almond">software development</strong>,
+                  working from{" "}
+                  <strong className="text-almond">requirements analysis</strong>{" "}
+                  to <strong className="text-almond">implementation</strong>,
+                  <strong className="text-almond">testing</strong> and{" "}
+                  <strong className="text-almond">deployment</strong>.
                 </p>
+                <br />
                 <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Similique ad quae nobis exercitationem dolore doloribus
-                  assumenda velit odit, beatae repudiandae accusamus dolores
-                  error dolorem enim pariatur blanditiis dolor, perspiciatis
-                  natus?
+                  My focus is on writing{" "}
+                  <strong className="text-almond">clean</strong>,{" "}
+                  <strong className="text-almond">scalable code</strong> and
+                  developing applications using{" "}
+                  <strong className="text-almond">TypeScript</strong>,{" "}
+                  <strong className="text-almond">JavaScript</strong>,{" "}
+                  <strong className="text-almond">React</strong>,{" "}
+                  <strong className="text-almond">Next.js</strong>, and{" "}
+                  <strong className="text-almond">NestJS</strong>. As a
+                  Development Analyst, I worked on the development and
+                  maintenance of{" "}
+                  <strong className="text-almond">RESTful APIs</strong>,
+                  implemented new features in{" "}
+                  <strong className="text-almond">legacy systems</strong>, and
+                  contributed to new projects, also assisting with{" "}
+                  <strong className="text-almond">backlog organization</strong>{" "}
+                  and{" "}
+                  <strong className="text-almond">
+                    technical documentation
+                  </strong>
+                  .
+                </p>
+                <br />
+                <p>
+                  {" "}
+                  As an IT Intern, I was actively involved in maintaining
+                  corporate systems and optimizing internal processes.
                 </p>
               </div>
             </article>
